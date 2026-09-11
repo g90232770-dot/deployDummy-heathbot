@@ -133,7 +133,7 @@ app.post(`/telegram-webhook/superSecret123SYNERCN8N4CR8NR9N`, async (req, res) =
     const response = await axios.post(
       "https://openrouter.ai/api/v1/chat/completions",
       {
-        model: 'meta-llama/llama-3.3-8b-instruct:free',
+        model: FREE_AI_NAMES[0],
         messages: [
               {
                 role: "system",
@@ -156,14 +156,14 @@ app.post(`/telegram-webhook/superSecret123SYNERCN8N4CR8NR9N`, async (req, res) =
     // Save to DB if not already saved
     const exists = await ChatHistory.findOne({ 
       question: question,
-      model: 'meta-llama/llama-3.3-8b-instruct:free',
+      model: FREE_AI_NAMES[0],
     });
 
     if (!exists) {
       await new ChatHistory({
         question: question,
         answer,
-        model: 'meta-llama/llama-3.3-8b-instruct:free',
+        model: FREE_AI_NAMES[0],
       }).save();
     }
 
