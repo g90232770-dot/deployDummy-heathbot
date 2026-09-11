@@ -173,7 +173,7 @@ app.post(`/telegram-webhook/superSecret123SYNERCN8N4CR8NR9N`, async (req, res) =
     });
 
     res.status(200).send("ok");
-  } catch {
+  } catch (error) {
     console.error("❌ Error in webhook:", error.response?.data || error.message);
 
     // Tell Telegram something went wrong
